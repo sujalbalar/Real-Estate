@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Popins', sans-serif;
+    overflow: hidden;
+}
+
+#contact{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact #contact-wrapper{
+    margin: 2em;
+    width: 70%;
+    height: 70%;
+    box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+    border-radius: .25em;
+    display: flex;
+}
+
+#contact #contact-wrapper form{
+    padding: 2em;
+    width: 50%;
+    background-color: #ffffff;
+    color: #1b2846;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+#contact #contact-wrapper form .cmn-prop-input{
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-family: inherit;
+    border-bottom: 1px solid #1b2846;
+    padding: .5em;
+    resize: none;
+}
+
+#contact #contact-wrapper form textarea:focus{
+    border-bottom: 2px solid #1b2846;
+}
+
+#contact #contact-wrapper form #send-mail{
+    cursor: pointer;
+    border: none;
+    background-color: #1b2846;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: .5em;
+    border-radius: 5em;
+}
+
+#contact #contact-wrapper form .cmn-prop-input:focus{
+    border-bottom: 2px solid #1b2846;
+}
+
+#contact-contact{
+    padding: 2em;
+    width: 50%;
+    background-color: #1b2846;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+}
+
+#contact-contact h5{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+#contact-contact a{
+    color: #ffffff;
+    text-decoration: none;
+}
