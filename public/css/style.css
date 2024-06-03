@@ -1,0 +1,140 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Popins', sans-serif;
+}
+
+/* header */
+header{
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5em;
+}
+
+header div{
+    display: flex;
+    align-items: center;
+}
+
+header a, footer a{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.appName{
+    font-size: 1.5em;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+header ul .sign-in-up{
+    background-color: #1b2846;
+    color: white;
+    border-radius: .5em;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    padding: .75em;
+}
+
+footer{
+    color: white;
+    background-color: #1b2846;
+    padding: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+footer a{
+    color: white;
+}
+
+.quick-links{
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+footer div ul li{
+    margin: .25em 0;
+    list-style: none;
+}
+
+.imgs{
+    margin-top: .5em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.cmn-img{
+    width: 120px;
+    height: 75px;
+    border-radius: .5em;
+    transition-duration: 2s;
+    transition-delay: .1s;
+}
+
+.cmn-img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 1px 1px white;
+}
+
+.cmn-img img{
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+}
+
+#img1{
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+#img2{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+#img3{
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+#img4{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#img5{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#img6{
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+.contact h5{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin: .5em 0;
+}

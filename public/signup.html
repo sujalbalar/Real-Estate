@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link href="./css/login-signup.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Signup Form-->
+    <form action="/signup" class="signup" method="post">
+        <h2> Create Account </h2>
+        <!-- UI Controls -->
+        <div class="control-group">
+            <label for="username">Username</label>
+            <input type="text" name="username">
+        </div>
+        <div class="control-group">
+            <label for="email">Email id</label>
+            <span> <input type="email" name="email"> </span>
+        </div>
+        <div class="control-group">
+            <label for="password">Password</label>
+            <span> <input type="password" name="password"> </span>
+        </div>
+        <div class="control-group">
+            <label for="confirm-password">Confirm Password</label>
+            <span> <input type="password" name="confirm-password"> </span>
+        </div>
+        <button type="submit">Sign Up</button>
+        <a class="login-signup-link" href="./signin.html"> Sign In </a>
+    </form>
+
+</body>
+
+</html>
