@@ -1,3 +1,3 @@
-import { MongoClient } from "mongodb";
+import mongoose from 'mongoose';
+const URL = 'mongodb://localhost:27017/SH-DB';
 
-const URL = ''

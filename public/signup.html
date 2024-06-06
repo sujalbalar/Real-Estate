@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo.png" />
     <link href="./css/login-signup.css" rel="stylesheet">
 </head>
 
@@ -14,20 +15,16 @@
         <h2> Create Account </h2>
         <!-- UI Controls -->
         <div class="control-group">
-            <label for="username">Username</label>
-            <input type="text" name="username">
-        </div>
-        <div class="control-group">
-            <label for="email">Email id</label>
-            <span> <input type="email" name="email"> </span>
+            <label for="email">Email Id</label>
+            <input type="email" name="email" required />
         </div>
         <div class="control-group">
             <label for="password">Password</label>
-            <span> <input type="password" name="password"> </span>
+            <span> <input type="password" name="password" required /> </span>
         </div>
         <div class="control-group">
-            <label for="confirm-password">Confirm Password</label>
-            <span> <input type="password" name="confirm-password"> </span>
+            <label for="cfrmPassword">Confirm Password</label>
+            <span> <input type="password" name="cfrmPassword" required /> </span>
         </div>
         <button type="submit">Sign Up</button>
         <a class="login-signup-link" href="./signin.html"> Sign In </a>
