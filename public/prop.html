@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="SHApp" ng-controller="appPropViewCtrl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{property.state}}</title>
     <link rel="icon" type="image/x-icon" href="assets/logo.png" />
     <link rel="stylesheet" href="css/head-foot.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/prop.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="js/app.js"></script>
-    <title>Home</title>
+    <script src="./js/app.js"></script>
 </head>
-<body ng-app="SHApp" ng-controller="appCtrl" ng-init="checkStatus()">
+<body>
     <header>
         <div>
             <img alt="logo.png" title="Logo" width="75em" height="50em" src="assets/logo.png" />
@@ -39,25 +39,16 @@
             </li>
         </ul>
     </header>
-
-    <div class="wrapper">
-        <div id="home-page-container">
-            <div id="texts">
-                <h2> Find place where you can live peacefully with your family. </h2>
-                <h3> India's best home rental website. </h3>
-                <div id="home-btns">
-                    <a id="search-prop-btn" href="properties.html"> Search your desired home </a>
-                    <a id="book-appointment-btn" href="appointment.html"> Book appointment </a>
-                </div>
-            </div>
-            <div id="img-slider">
-                <div class="dirct-btn" id="left-btn" ng-click="explrLeft()"> <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 -960 960 960" width="1.5em" fill="#f0f0f0"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg> </div>
-                    <img title="house image" alt="home" ng-src="{{imgURL}}" />
-                <div class="dirct-btn" id="right-btn" ng-click="explrRight()"> <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 -960 960 960" width="1.5em" fill="#f0f0f0"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg> </div>
-            </div>
+    <div id="wrapper">
+        <img ng-src="{{property.imgUrl}}"/>
+        <div id="content-wrapper">
+            <h2 id="address"> {{property.address}} </h2>
+            <h4 id="location"> {{property.state}}, {{property.address}} </h4>
+            <h4 id="type"> Type : {{property.type}} </h4>
+            <h4 id="rent"> Rent : {{property.rent}} ₹ </h4>
+            <h4 id="price"> Price : {{property.price}} ₹ </h4>
         </div>
     </div>
-
     <footer>
         <div class="quick-links items">
             <h4> Quick Links </h4>

@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Popins', sans-serif;
+    user-select: none;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+#prop-filters{
+    background-color: #f0f0f0;
+    font-size: 1em;
+    padding: 1.5em;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 1.5em;
+}
+
+#locHead{
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+#location-filter{
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display: flex;
+    gap: 3em;
+}
+
+#prop-filters #location-filter select{
+    padding: .5em;
+    font-size: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#size-filter{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5em;    
+}
+
+.custom-radio{
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    accent-color: #1b2846;
+}
+
+#typeHead{
+    grid-row: 3/4;
+    grid-column: 1/3;
+}
+
+#type-filter{
+    grid-row: 4/5;
+    grid-column: 1/3;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.5em;
+}
+
+.wrapper h1{
+    text-align: center;
+    color: #1b2846;
+}
+
+#prop-filters-search-btn{
+    width: 5em;
+    background-color: #1b2846;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: .25em;
+    border: none;
+    outline: none;
+    border-radius: 50em;
+    justify-self: center;
+    grid-row: 5/6;
+    grid-column: 1/3;
+}
+
+#no-props h3{
+    text-align: center;
+    padding: .75em;
+    margin: 1em;
+    background-color: #f8ecd5;
+    color: #ee602c;
+}
+
+#props{
+    width: 100%;
+    margin-bottom: 5em;
+    display: grid;
+    justify-items: center;
+    gap: 3.5em 0;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card{
+    position: relative;
+    width: 20vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap : 1em;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+    border-radius: .5em .5em .5em 0;
+    cursor: pointer;
+}
+
+.card .props-img{
+    width: inherit;
+    object-fit: cover;
+    border-radius: .5em .5em 0 0;
+}
+
+.card .details{
+    padding: .75em;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.card .ellipsis-txt-address{
+    font-size: 1.15vw;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .location{
+    color: #434343;
+    font-size: 1vw;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .type{
+    color: #666666;
+    font-size: .9vw;
+}
+
+.card .pricing{
+    font-size: 1vw;
+    color: #5cb85c;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.card .rent{
+    font-weight: bold;
+}
+
+.card .price{
+    color: #20c120;
+}
+
+.card .abslt-size{
+    color: #666666;
+    font-size: .9vw;
+    padding: .5em;
+    position: absolute;
+    bottom: -2.2em;
+    left: 0;
+    border-radius: 0 0 .5em .5em;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 480px) {
+
+    #prop-filters{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2em;
+    }
+
+    #location-filter{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #prop-filters #location-filter select{
+        width: inherit;
+    }
+
+    #size-filter, #type-filter{
+        flex-wrap: wrap;
+    }
+
+    #prop-filters-search-btn{
+        width: 100%;
+    }
+
+    #props{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.75em;
+    }
+
+    .card{
+        width: 75vw;
+        position: relative;
+    }
+
+    .card .ellipsis-txt-address{
+        font-size: 5vw;
+    }
+
+    .card .location, .card .type, .card .pricing{
+        font-size: 4vw;
+    }
+
+    .card .abslt-size{
+        font-size: 3vw;
+        font-weight: 900;
+    }
+}

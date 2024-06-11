@@ -31,7 +31,8 @@
                 <a href="About.html"> About us </a>
             </li>
             <li>
-                <a class="sign-in-up" href="signin.html"> Sign In / Sign Up </a>
+                <a class="sign-in-up" href="login.html" ng-show="!lgnStt"> Sign In / Sign Up </a>
+                <a class="sign-in-up" href="add-property.html" ng-show="lgnStt"> Add property </a>
             </li>
         </ul>
     </header>
@@ -45,60 +46,67 @@
                     <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
                 </select>
 
-                <select name="cities" required ng-model="selectedCity">
+                <select name="city" required ng-model="selectedCity">
                     <option value=""> -- Select City -- </option>
                     <option ng-repeat="city in cities" value="{{city}}">{{city}}</option>
                 </select>
 
+                <textarea name="address" rows="2" id="addressF" placeholder="Address"></textarea>
+
                 <h3> Size </h3>
 
                 <div class="custom-radio">
-                    <input type="radio" required name="size" ng-click="showOtherField('N')" value="1BHK" />
-                    <label for="1">1BHK</label>
+                    <input type="radio" required checked name="size" ng-click="showOtherField('N')" value="1BHK" />
+                    <label for="size">1BHK</label>
 
-                    <input type="radio" required name="size" ng-click="showOtherField('N')" value="2BHK" />
-                    <label for="1">2BHK</label>
+                    <input type="radio" name="size" ng-click="showOtherField('N')" value="2BHK" />
+                    <label for="size">2BHK</label>
 
-                    <input type="radio" required name="size" ng-click="showOtherField('N')" value="3BHK" />
-                    <label for="1">3BHK</label>
+                    <input type="radio" name="size" ng-click="showOtherField('N')" value="3BHK" />
+                    <label for="size">3BHK</label>
 
-                    <input type="radio" required name="size" ng-click="showOtherField('N')" value="4BHK" />
-                    <label for="1">4BHK</label>
+                    <input type="radio" name="size" ng-click="showOtherField('N')" value="4BHK" />
+                    <label for="size">4BHK</label>
                     
-                    <input type="radio" required name="size" ng-click="showOtherField('Y')"/>
-                    <label for="1">Other</label>
+                    <input type="radio" name="size" ng-click="showOtherField('Y')"/>
+                    <label for="size">Other</label>
 
                 </div>
 
-                <input id="other-size" required type="text" ng-show="isOFVisible" ng-model="propSize" placeholder="Other" />
+                <input id="other-size" ng-required="{{isOFVisible}}" name="size" type="text" ng-show="isOFVisible" ng-model="propSize" placeholder="Other" />
 
                 <h3> Type </h3>
 
                 <div class="custom-radio">
-                    <input type="radio" required name="type" value="Tenement" />
+                    <input type="radio" checked required name="type" value="Tenement" />
                     <label for="type">Tenement</label>
 
-                    <input type="radio" required name="type" value="Apartment" />
+                    <input type="radio" name="type" value="Apartment" />
                     <label for="type">Apartment</label>
 
-                    <input type="radio" required name="type" value="Penth House" />
-                    <label for="type">Penth House</label>
-
-                    <input type="radio" required name="type" value="Fetch" />
-                    <label for="type">Flat</label>
-
-                    <input type="radio" required name="type" value="Villa" />
+                    <input type="radio" name="type" value="Villa" />
                     <label for="type">Villa</label>
 
-                    <input type="radio" required name="type" value="Bungalow" />
+                    <input type="radio" name="type" value="Fetch" />
+                    <label for="type">Flat</label>
+
+                    <input type="radio" name="type" value="Penth House" />
+                    <label for="type">Penth House</label>
+
+                    <input type="radio" name="type" value="Bungalow" />
                     <label for="type">Bungalow</label>
                 </div>
+
+                <h3> Rent & Price (Only ₹) </h3>
+
+                <input type="number" name="rent" required placeholder="Rent" />
+                <input type="number" name="price" required placeholder="Price" />
 
                 <div id="custom-file-upload-wrapper">
                     <input type="file" required name="file" id="imageInput" onchange="angular.element(this).scope().previewImg(event)"" accept="image/*" />
                     <label> <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 -960 960 960" width="1.5em" fill="#ffffff"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg> Upload Image </label>
                 </div>
-                <button type="submit" id="add-prop-btn"> Add Property </button>
+                <input type="submit" id="add-prop-btn" value="Add property" ng-click="collectValue()">
             </div>
             <img ng-src="{{PreviewImage}}" ng-show="PreviewImage != null" id="previewImg" />
         </form>

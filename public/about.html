@@ -6,9 +6,11 @@
     <link rel="icon" type="image/x-icon" href="assets/logo.png" />
     <link rel="stylesheet" href="css/head-foot.css" />
     <link rel="stylesheet" href="css/about-style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
     <title>About us</title>
 </head>
-<body>
+<body ng-app="SHApp" ng-controller="appCtrl" ng-init="checkStatus()">
     <header>
         <div>
             <img alt="logo.png" title="Logo" width="75em" height="50em" src="assets/logo.png" />
@@ -25,17 +27,22 @@
                 <a href="contact.html"> Contact us </a>
             </li>
             <li>
-                <a href="About.html"> About us </a>
+                <a href="About.html" class="active"> About us </a>
             </li>
             <li>
-                <a class="sign-in-up" href="signin.html"> Sign In / Sign Up </a>
+                <a class="sign-in-up" href="login.html" ng-if="!lgnStt"> Sign In / Sign Up </a>
+                <a class="sign-in-up" href="add-property.html" ng-if="lgnStt"> Add property </a>
+            </li>
+            <li ng-if="lgnStt" id="log-out" ng-click="logout()">
+                <p> Logout </p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
             </li>
         </ul>
     </header>
 
     <div id="about-wrapper">
         <div id="about">
-            <h2> Welcome to our website </h2>
+            <h1> Welcome to our website </h1>
             <p>
                 Discover new houses and more. Our team of experts brings you the best home and insights to help you stay ahead of the curve.
             </p>

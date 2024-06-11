@@ -10,8 +10,7 @@ body{
 
 .wrapper{
     background-color: #f0f0f0;
-    width: 100%;
-    height: 39vw;
+    height: 100%;
 }
 
 #home-page-container{
@@ -19,16 +18,16 @@ body{
     height: 100%;
     padding: 2em;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
 }
 
 #texts{
     width: 50%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2.5em;
+    gap: 2em;
 }
 
 #texts h2{
@@ -39,8 +38,16 @@ body{
     color: #6c6e73;
 }
 
+#home-btns{
+    width: 100%;
+    padding: .5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
 #texts #search-prop-btn{
-    width: fit-content;
+    text-align: center;
     padding: .75em;
     background-color: #1b2846;
     color: white;
@@ -50,26 +57,25 @@ body{
 }
 
 #texts #book-appointment-btn{
+    text-align: center;
     color: #1b2846;
     background-color: inherit;
     border: 1px solid #1b2846;
     border-radius: 5em;
     padding: .75em;
     text-decoration: none;
-    margin-left: 1em;
 }
 
 #img-slider{
+    width: 50%;
+    user-select: none;
     position: relative;
     box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
-    width: auto;
-    height: inherit;
 }
 
 #img-slider img{
-    width: inherit;
-    height: inherit;
-    object-fit: contain;
+    width: 100%;
+    aspect-ratio: 16/9;
 }
 
 .dirct-btn{
@@ -96,4 +102,45 @@ body{
 #right-btn{
     top: 50%;
     right: -2%;
+}
+
+@media screen and (max-width: 600px){
+    #home-page-container{
+        width: 100%;
+        height: 90%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+        gap: 1.5em;
+    }
+
+    #texts{
+        width: inherit;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    #home-btns{
+        width: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    #img-slider{
+        user-select: none;
+        position: relative;
+        box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 100%;
+    }
+
+    #img-slider img{
+        width: inherit;
+        aspect-ratio: 16/9;
+    }
 }
