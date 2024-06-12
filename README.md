@@ -15,4 +15,4 @@ Real-Estate is web application where user can find their desired home.
 
 ![image](https://github.com/Sujju666/Real-Estate/assets/96531985/152d6bce-5df8-434d-a657-b86147006830)
 
-Application built using Express (Node.js), AngularJS, MongoDB (without mongo db cluster).
+**Application built using Express (Node.js), AngularJS, MongoDB (without mongo db cluster).**
