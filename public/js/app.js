@@ -10,7 +10,7 @@ anglApp.directive('customOnChange', function () {
   };
 });
 
-anglApp.controller('appCtrl', function ($scope, $http, $rootScope) {
+anglApp.controller('appCtrl', function ($scope, $http) {
      
     $scope.isOFVisible = false;
     $scope.properties = '';
@@ -38,6 +38,7 @@ anglApp.controller('appCtrl', function ($scope, $http, $rootScope) {
         $http.get('/checkStatus').
         then( response => {
             $scope.lgnStt = response.data.status === true;
+            console.log($scope.lgnStt);
         },
         err => {
             console.log(err);
@@ -52,7 +53,6 @@ anglApp.controller('appCtrl', function ($scope, $http, $rootScope) {
         err => {
             console.error(err);
         });
-
         $scope.checkStatus();
     }
 
@@ -95,10 +95,6 @@ anglApp.controller('appCtrl', function ($scope, $http, $rootScope) {
 
         reader.readAsDataURL(e.target.files[0]);
     };
-
-    $scope.collectValue = function () {
-        console.log('Samajayaa have');
-    }
 
     $scope.initPropData = function() {
         $http.get('/getProps').
@@ -143,9 +139,20 @@ anglApp.controller('showProp',function($scope, $window, serviceShareData){
     }
 });
 
-anglApp.controller('appPropViewCtrl',function($scope, serviceShareData){
+anglApp.controller('appPropViewCtrl',function($scope, $http, serviceShareData){
     $scope.property = serviceShareData.getData();
     console.log($scope.property);
+
+    $scope.checkStatus = function() {
+        $http.get('/checkStatus').
+        then( response => {
+            $scope.lgnStt = response.data.status === true;
+            console.log($scope.lgnStt);
+        },
+        err => {
+            console.log(err);
+        })
+    }
 });
 
 anglApp.service('serviceShareData', function($window){

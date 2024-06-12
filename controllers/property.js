@@ -31,4 +31,4 @@ async function searchProperties (req, res) {
     })
 }
 
-export {getData, addProperty, searchProperties}
+export {getData, searchProperties}

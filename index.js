@@ -6,9 +6,10 @@ import path, { dirname } from 'path';
 import multer from 'multer';
 
 import {register, login, logout} from './controllers/user.js';
-import {getData, addProperty, searchProperties} from './controllers/property.js';
+import {getData, searchProperties} from './controllers/property.js';
 import {options, transporter} from './mail/mail.js';
 import connect from './config/db.js';
+import propertyModel from './models/property.js'
 
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
@@ -18,12 +19,6 @@ import { fetchCities, fetchStates } from './controllers/state-city.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 let fileName = '';
-
-const PHONE_PE_HOST_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
-const MERCHANT_ID = "PGTESTPAYUAT";
-const SALT_INDEX = 1;
-const SALT_KEY = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
-const APP_BE_URL = "http://localhost:9999";
 
 const diskStorage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -100,14 +95,19 @@ app.post('/add-prop-data', auth, upload.single('file'), async (req, res) => {
     console.log(filePath);
     if(fs.existsSync(filePath)){
         try{
-            const filePath = path.join('../uploads/', fileName);
+            const filePath = path.join('../uploads', fileName);
             let {state, city, address, rent, price, size, type} = req.body;
+            if(Array.isArray(size))
+                size = size[1];
+            
             const property = new propertyModel({ address : address, state : state, city : city, rent : rent, price : price, type : type, size : size, imgUrl : filePath});
 
             await property.save();
-            res.status(200).sendFile(path.join(__dirname,'/public/add-property.html'));
+            res.status(200).sendFile(path.join(__dirname,'public/add-property.html'));
         }
         catch(err){
+            fs.unlinkSync(filePath);
+            console.log(err);
             res.status(400).send('Data insertion failed.  please try again.')
         };
     }
