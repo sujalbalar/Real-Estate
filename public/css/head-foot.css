@@ -13,6 +13,7 @@ header{
 header div{
     display: flex;
     align-items: center;
+    gap: .5em;
 }
 
 header a{

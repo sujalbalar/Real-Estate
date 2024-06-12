@@ -56,13 +56,13 @@ body{
     border-radius: 5em;
 }
 
-#texts #book-appointment-btn{
+#texts #help-btn{
     text-align: center;
     color: #1b2846;
     background-color: inherit;
     border: 1px solid #1b2846;
     border-radius: 5em;
-    padding: .75em;
+    padding: .75em 1.25em;
     text-decoration: none;
 }
 
