@@ -5,12 +5,13 @@
 }
 
 body{
+    height: auto;
     background-color: #f0f0f0;
     font-family: 'Popins', sans-serif;
 }
 
 #about-wrapper{
-    height: 85%;
+    height: 87vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,18 +26,18 @@ body{
 }
 
 #about h1{
-    font-size: 7vw;
+    font-size: 2vw;
     color: #162038;
 }
 
 #about p{
-    font-size: 5vw;
+    font-size: 1.25vw;
     color: #5f6165;
 }
 
 #about-explore-btn{
     width: fit-content;
-    font-size: 5vw;
+    font-size: 1vw;
     background-color: #162038;
     color: white;
     text-decoration: none;
@@ -66,7 +67,21 @@ body{
         width: 100%;
     }
 
+    #about h1{
+        font-size: 7vw;
+        color: #162038;
+    }
+    
+    #about p{
+        font-size: 5vw;
+        color: #5f6165;
+    }
+
     #about-wrapper img{
         width: 100%;
+    }
+
+    #about-explore-btn{
+        font-size: 4vw;
     }
 }
