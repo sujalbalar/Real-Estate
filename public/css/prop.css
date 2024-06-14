@@ -37,11 +37,13 @@ body{
 
 #content-wrapper #rent{
     font-size: 1vw;
+    cursor: pointer;
     color: #5cb85c;
 }
 
 #content-wrapper #price{
     font-size: 1vw;
+    cursor: pointer;
     color: #20c120;
 }
 

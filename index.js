@@ -114,7 +114,7 @@ app.post('/add-prop-data', auth, upload.single('file'), async (req, res) => {
     else{
         res.status(400).json({msg : 'File upload failed.'});
     }
-});
+})
 
 app.get('/searchProps', searchProperties);
 

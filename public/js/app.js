@@ -144,13 +144,16 @@ anglApp.controller('appPropViewCtrl',function($scope, $http, serviceShareData){
     console.log($scope.property);
 
     $scope.checkStatus = function() {
-        $http.get('/checkStatus').
+        $http({
+            method : 'GET',
+            url :'/checkStatus'
+        }).
         then( response => {
             $scope.lgnStt = response.data.status === true;
             console.log($scope.lgnStt);
         },
         err => {
-            console.log(err);
+            console.error(err);
         })
     }
 });

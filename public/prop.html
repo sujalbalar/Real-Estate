@@ -45,8 +45,8 @@
             <h2 id="address"> {{property.address}} </h2>
             <h4 id="location"> {{property.state}}, {{property.address}} </h4>
             <h4 id="type"> Type : {{property.type}} </h4>
-            <h4 id="rent"> Rent : {{property.rent}} ₹ </h4>
-            <h4 id="price"> Price : {{property.price}} ₹ </h4>
+            <h4 id="rent" ng-click="rent(property.rent)"> Rent : {{property.rent}} ₹ </h4>
+            <h4 id="price" ng-click="buy(property.price)"> Price : {{property.price}} ₹ </h4>
         </div>
     </div>
     <footer>
