@@ -93,14 +93,14 @@ app.get('/getProps', getData);
 app.post('/add-prop-data', auth, upload.single('file'), async (req, res) => {
     const filePath = path.join(__dirname,'uploads',fileName);
     console.log(filePath);
-    if(fs.existsSync(filePath)){
+if(fs.existsSync(filePath) && req.session.userEmail){
         try{
             const filePath = path.join('../uploads', fileName);
             let {state, city, address, rent, price, size, type} = req.body;
             if(Array.isArray(size))
-                size = size[1];
+                size = size[0];
             
-            const property = new propertyModel({ address : address, state : state, city : city, rent : rent, price : price, type : type, size : size, imgUrl : filePath});
+            const property = new propertyModel({ address : address, state : state, city : city, rent : rent, price : price, type : type, size : size, imgUrl : filePath, agent : req.session.userEmail});
 
             await property.save();
             res.status(200).sendFile(path.join(__dirname,'public/add-property.html'));

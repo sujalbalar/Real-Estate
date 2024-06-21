@@ -84,6 +84,12 @@ footer{
     gap: .5em;
 }
 
+.quick-links ul{
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+}
+
 footer a{
     color: white;
     text-decoration: none;
@@ -162,11 +168,11 @@ footer div ul li{
     grid-row: 2/3;
 }
 
-.contact h5{
+.contact .cnt{
     display: flex;
     align-items: center;
     gap: .5em;
-    margin: 1em 0;
+    margin: .75em 0;
 }
 
 .contact{

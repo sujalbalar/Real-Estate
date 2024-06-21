@@ -32,6 +32,10 @@ const propertySchema = mongoose.Schema({
     imgUrl : {
         type : String,
         required : true
+    },
+    agent : {
+        type : String,
+        required : true
     }
 });
 
