@@ -21,7 +21,7 @@
                 <a href="index.html"> Home </a>
             </li>
             <li>
-                <a href="properties.html"> Properties </a>
+                <a href="properties.html"> Assets </a>
             </li>
             <li>
                 <a href="contact.html"> Contact us </a>
@@ -31,7 +31,10 @@
             </li>
             <li>
                 <a class="sign-in-up" href="login.html" ng-if="!lgnStt"> Sign In / Sign Up </a>
-                <a class="sign-in-up" href="add-property.html" ng-if="lgnStt"> Add property </a>
+                <a class="sign-in-up" href="add-property.html" ng-if="isAgent"> Add new asset </a>
+            </li>
+            <li>
+                <a href="assets.html" ng-if="isAgent"> Update assets </a>
             </li>
             <li ng-if="lgnStt" id="log-out" ng-click="logout()">
                 <p> Logout </p>

@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="./js/app.js"></script>
 </head>
-<body ng-app="SHApp" ng-controller="appCtrl" ng-init="init(); initPropData();">
+<body ng-app="SHApp" ng-controller="appCtrl" ng-init="init(); checkStatus(); initPropData();">
     <header>
         <div>
             <img alt="logo.png" title="Logo" width="75em" height="50em" src="assets/logo.png" />
@@ -21,7 +21,7 @@
                 <a href="index.html"> Home </a>
             </li>
             <li>
-                <a href="properties.html" class="active"> Properties </a>
+                <a href="properties.html" class="active"> Assets </a>
             </li>
             <li>
                 <a href="contact.html"> Contact us </a>
@@ -31,7 +31,10 @@
             </li>
             <li>
                 <a class="sign-in-up" href="login.html" ng-if="!lgnStt"> Sign In / Sign Up </a>
-                <a class="sign-in-up" href="add-property.html" ng-if="lgnStt"> Add property </a>
+                <a class="sign-in-up" href="add-property.html" ng-if="isAgent"> Add new asset </a>
+            </li>
+            <li>
+                <a href="assets.html" ng-if="isAgent"> Update assets </a>
             </li>
             <li ng-if="lgnStt" id="log-out" ng-click="logout()">
                 <p> Logout </p>
@@ -120,7 +123,7 @@
             <Button id="prop-filters-search-btn" ng-click="search()">Search</Button>
         </form>
 
-        <h1> Properties </h1>
+        <h1> Assets </h1>
 
         <div id="no-props" ng-if="hideLYT"> <h3> No Data Found </h3> </div>
         <div id="props" ng-if="!hideLYT">

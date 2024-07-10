@@ -1,4 +1,5 @@
 import propertyModel from '../models/property.js'
+import mongodb from 'mongodb'
 
 async function getData(req, res) {
     await propertyModel.find().
@@ -31,4 +32,35 @@ async function searchProperties (req, res) {
     })
 }
 
-export {getData, searchProperties}
+async function fetchInsertedAssets(req, res) {
+    await propertyModel.find({agent : req.session.userEmail})
+    .then(
+        result => {
+            if(result.length > 0)
+                res.status(200).json({data : result});
+            else
+                res.status(200).json({data : false});
+        }
+    )
+    .catch(
+        err => {
+            console.error(err);
+        }
+    )
+}
+
+async function updateAsset(req, res){
+
+}
+
+async function deleteAsset(req, res){
+    await propertyModel.deleteOne({_id : req.query.dataId})
+    .then(() => {
+        res.json({status : true});
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+}
+
+export {getData, searchProperties, fetchInsertedAssets, updateAsset, deleteAsset}

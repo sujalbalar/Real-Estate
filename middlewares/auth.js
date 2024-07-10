@@ -1,5 +1,5 @@
 const auth = (req, res, next) => {
-    if(req.session.userEmail)
+    if(typeof req.session.userEmail !== 'undefined')
         next();
     else
         res.redirect('login.html');

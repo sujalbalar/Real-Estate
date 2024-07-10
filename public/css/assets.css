@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Popins', sans-serif;
+}
+
+.wrapper{
+    padding: 5% 0;
+    height: 87vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrapper table{
+    border-collapse: collapse;
+}
+
+.wrapper table tr:first-child{
+    border-bottom: 2px solid black;
+}
+
+.wrapper table tr{
+    border-bottom: 1px solid black;
+}
+
+.wrapper table tr th, td{
+    padding: 25px;
+}
+
+.edit-delete-img-wrapper{
+    display: flex;
+    gap: 0 1em;
+}
+
+.edit-delete-img-wrapper img{
+    cursor: pointer;
+}

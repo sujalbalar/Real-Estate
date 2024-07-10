@@ -6,7 +6,7 @@ import path, { dirname } from 'path';
 import multer from 'multer';
 
 import {register, login, logout} from './controllers/user.js';
-import {getData, searchProperties} from './controllers/property.js';
+import {getData, searchProperties, fetchInsertedAssets, updateAsset, deleteAsset} from './controllers/property.js';
 import {options, transporter} from './mail/mail.js';
 import connect from './config/db.js';
 import propertyModel from './models/property.js'
@@ -57,11 +57,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,homePagePath));
 });
 
-app.get('/checkStatus', (req, res) => {
-    if(req.session.userEmail)
-        res.json({status : true });
-    else
-        res.json({status : false });
+app.get('/checkStatus', auth, (req, res) => {
+    res.json({status : typeof req.session.userEmail !== 'undefined'});
+})
+
+app.get('/isAgent', auth, (req, res) => {
+    res.json({status : typeof req.session.isAgent !== 'undefined'});
 })
 
 app.post('/register', register);
@@ -93,7 +94,7 @@ app.get('/getProps', getData);
 app.post('/add-prop-data', auth, upload.single('file'), async (req, res) => {
     const filePath = path.join(__dirname,'uploads',fileName);
     console.log(filePath);
-if(fs.existsSync(filePath) && req.session.userEmail){
+    if(fs.existsSync(filePath) && req.session.userEmail){
         try{
             const filePath = path.join('../uploads', fileName);
             let {state, city, address, rent, price, size, type} = req.body;
@@ -117,6 +118,12 @@ if(fs.existsSync(filePath) && req.session.userEmail){
 })
 
 app.get('/searchProps', searchProperties);
+
+app.get('/fetchInsertedAssets', fetchInsertedAssets);
+
+app.put('/updateAsset', auth, updateAsset);
+
+app.delete('/deleteAsset', auth, deleteAsset);
 
 app.listen(9999, () => {
     console.log('Server running on 9999 port.');

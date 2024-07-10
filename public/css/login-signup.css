@@ -58,6 +58,28 @@ form h2{
     border-radius: .25em;
 }
 
+.customLYT{
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .25em;
+    margin: .75em 0;
+}
+
+.customLYT #toggle{
+    accent-color: #202E59;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.customLYT #tgglLbl{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #202E59;
+}
+
 Button{
     width: 55%;
     border-radius: .25em;

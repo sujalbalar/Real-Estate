@@ -10,7 +10,7 @@ anglApp.directive('customOnChange', function () {
   };
 });
 
-anglApp.controller('appCtrl', function ($scope, $http) {
+anglApp.controller('appCtrl', function ($scope, $http, $window) {
      
     $scope.isOFVisible = false;
     $scope.properties = '';
@@ -35,33 +35,43 @@ anglApp.controller('appCtrl', function ($scope, $http) {
     }
 
     $scope.checkStatus = function() {
-        $http.get('/checkStatus').
-        then( response => {
+        $http.get('/checkStatus')
+        .then( response => {
             $scope.lgnStt = response.data.status === true;
-            console.log($scope.lgnStt);
+            if(!$scope.lgnStt && $window.location.href == 'index.html')
+                $window.location.href = 'login.html'
         },
         err => {
             console.log(err);
-        })
+        });
+
+        $http.get('/isAgent')
+        .then( response => {
+            $scope.isAgent = response.data.status === true;
+        },
+        err => {
+            console.log(err);
+        });
     }
     
     $scope.init = function() {
-        $http.get('/fetchStates').
-        then( response => {
+        $http.get('/fetchStates')
+        .then( response => {
             $scope.states = response.data.data;
         },
         err => {
             console.error(err);
         });
-        $scope.checkStatus();
     }
 
     $scope.logout = function() {
-        $http.get('/logout').
-        then(response => {
-            console.log(response.data);
-            if(!response.data.status)
+        $http.get('/logout')
+        .then(response => {
+            if(!response.data.status){
+                $scope.isAgent = false;
                 $scope.lgnStt = false;
+                $window.location.href = "index.html";
+            }
         }, 
         err => {
             console.error(err);
@@ -73,8 +83,8 @@ anglApp.controller('appCtrl', function ($scope, $http) {
            method : 'GET',
            url : '/fetCities',
            params : {selectedState : $scope.selectedState}
-        }).
-        then( response => {
+        })
+        .then( response => {
             $scope.cities = response.data.data;
         },
         err => {
@@ -97,8 +107,8 @@ anglApp.controller('appCtrl', function ($scope, $http) {
     };
 
     $scope.initPropData = function() {
-        $http.get('/getProps').
-        then(response => {
+        $http.get('/getProps')
+        .then(response => {
             $scope.properties = response.data.data;
             console.log($scope.properties);
         },
@@ -113,8 +123,8 @@ anglApp.controller('appCtrl', function ($scope, $http) {
             url : '/searchProps',
             method : 'GET',
             params : {state : $scope.selectedState, city : $scope.selectedCity, size : $scope.size, type : $scope.type}
-        }).
-        then(response => {
+        })
+        .then(response => {
             const data = response.data.data;
             if(Array.isArray(data))
                 $scope.properties = data;
@@ -147,8 +157,8 @@ anglApp.controller('appPropViewCtrl',function($scope, $http, serviceShareData){
         $http({
             method : 'GET',
             url :'/checkStatus'
-        }).
-        then( response => {
+        })
+        .then( response => {
             $scope.lgnStt = response.data.status === true;
             console.log($scope.lgnStt);
         },
@@ -184,4 +194,81 @@ anglApp.service('serviceShareData', function($window){
         addData : addData,
         getData : getData
     };
+});
+
+anglApp.controller('assetsCtrl',function($scope, $http, $window){
+    $scope.hideImgBtn = true;
+    $scope.assets;
+    $scope.fetchInsertedAssets = function(){
+        if(!$scope.lgnStt)
+            return;
+        $http({
+            method: 'GET',
+            url: '/fetchInsertedAssets',
+        })
+        .then(
+            response => {
+                console.log(response.data.data);
+                if(response.data.data == false){
+                    $scope.assets = [];
+                    $scope.hideImgBtn = false;
+                }
+                else{
+                    $scope.assets = response.data.data;
+                }
+            },
+            err => {
+                console.error(err);
+            }
+        )
+    }
+
+    $scope.checkStatus = function() {
+        $http.get('/checkStatus')
+        .then( response => {
+            $scope.lgnStt = response.data.status === true;
+            if(!$scope.lgnStt)
+                $window.location.href = 'login.html'
+            $scope.fetchInsertedAssets();
+        },
+        err => {
+            console.log(err);
+        })
+    }
+
+    $scope.update = function(){
+        $http({
+            method : 'PUT',
+            url : '/updateAsset',
+            params : {}
+        })
+        .then(
+            response => {
+                
+            },
+            err => {
+                console.error(err);
+            }
+        )
+    }
+
+    $scope.delete = function(id){
+        console.log("HA HO");
+        $http({
+            method : 'DELETE',
+            url : '/deleteAsset',
+            params : {dataId : id}
+        })
+        .then(
+            response => {
+                if(response.data.status)
+                    $scope.fetchInsertedAssets();
+                else
+                    alert('Deletion failed!');
+            },
+            err => {
+                console.error(err);
+            }
+        )
+    }
 });
